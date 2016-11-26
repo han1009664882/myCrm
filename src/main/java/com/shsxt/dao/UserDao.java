@@ -7,6 +7,11 @@ import org.apache.ibatis.annotations.Param;
 import com.crm.base.BaseDao;
 import com.shsxt.model.User;
 
+/**
+ * master--->userDao
+ * @author Administrator
+ *
+ */
 public interface UserDao extends BaseDao<User>{
 
 	public List<User> listAll();
