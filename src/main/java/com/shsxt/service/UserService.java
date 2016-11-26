@@ -12,6 +12,7 @@ import com.crm.base.exception.ParamException;
 import com.shsxt.constant.Constant;
 import com.shsxt.dao.UserDao;
 import com.shsxt.model.User;
+import com.shsxt.util.AssertUtil;
 import com.shsxt.util.MD5Util;
 import com.shsxt.util.UserIDBase64;
 import com.shsxt.vo.LoginUserInfo;
@@ -66,7 +67,7 @@ public class UserService {
 	 */
 	private void checkUpdatePwd(String oldPassword,
 			String newPassword, String newPassword2) {
-		if (StringUtils.isBlank(oldPassword)) {
+/*		if (StringUtils.isBlank(oldPassword)) {
 			throw new ParamException("请输入旧密码");
 		}
 		
@@ -81,6 +82,12 @@ public class UserService {
 		if (!newPassword2.equals(newPassword)) {
 			throw new ParamException("确认密码不一致");
 		}
+*/
+		AssertUtil.notEmpty(oldPassword, "请输入旧密码");
+		AssertUtil.notEmpty(newPassword, "请输入新密码");
+		AssertUtil.notEmpty(newPassword2, "请输入确认密码");
+		AssertUtil.isTrue(!newPassword2.equals(newPassword), "确认密码不一致");
+		
 	}
 
 	public List<User> listAll(){
@@ -97,23 +104,12 @@ public class UserService {
 	public UserLoginIdentity login(String userName,String password,String roleName){
 		
 		//基本参数验证
-		if(StringUtils.isBlank(userName)){
-			throw new ParamException("请输入用户名");
-		}
-		
-		if(StringUtils.isBlank(password)){
-			throw new ParamException("请输入密码");
-		}
-		
-		if(StringUtils.isBlank(password)){
-			throw new ParamException("请选择用户类型");
-		}
-		
+		AssertUtil.notEmpty(userName, "请输入用户名");
+		AssertUtil.notEmpty(password, "请输入密码");
+		AssertUtil.notEmpty(roleName, "请选择用户类型");
 		password = MD5Util.md5Method(password);
 		User user = userDao.findUserByUserNamePwdRole(userName, password, roleName);
-		if(user==null){
-			throw new ParamException("用户名或密码错误");
-		}
+		AssertUtil.notNull(user, "用户名或密码错误");
 		
 		// 封装返回对象
 		UserLoginIdentity userLoginIdentity = new UserLoginIdentity();

@@ -18,6 +18,7 @@ import com.shsxt.constant.SaleChanceState;
 import com.shsxt.dao.SaleChanceDao;
 import com.shsxt.model.SaleChance;
 import com.shsxt.query.SaleChanceQuery;
+import com.shsxt.util.AssertUtil;
 
 @Service
 public class SaleChanceService {
@@ -49,9 +50,7 @@ public class SaleChanceService {
 		}
 
 		String customerName = saleChance.getCustomerName();
-		if (StringUtils.isBlank(customerName)) {
-			throw new ParamException("请选择客户");
-		}
+		AssertUtil.notEmpty(customerName, "请选择客户");
 		
 		int cgjl = saleChance.getCgjl();
 		if(cgjl<1){
