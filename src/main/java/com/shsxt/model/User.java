@@ -1,10 +1,9 @@
 package com.shsxt.model;
 
-import java.io.Serializable;
-import java.util.Date;
+import com.crm.base.BaseModel;
 
 @SuppressWarnings("serial")
-public class User implements Serializable{
+public class User extends BaseModel{
 
 	private Integer id;
 	
@@ -20,12 +19,6 @@ public class User implements Serializable{
 	
 	private String roleName;
 	
-	private Integer isValid;
-	
-	private Date createDate;
-	
-	private Date updateDate;
-
 	public User() {
 
 	}
@@ -86,30 +79,4 @@ public class User implements Serializable{
 		this.roleName = roleName;
 	}
 
-	public Integer getIsValid() {
-		return isValid;
-	}
-
-	public void setIsValid(Integer isValid) {
-		this.isValid = isValid;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public Date getUpdateDate() {
-		return updateDate;
-	}
-
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
-	}
-	
-	
-	
 }

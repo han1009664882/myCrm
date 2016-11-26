@@ -26,10 +26,10 @@ public class SaleChanceController extends BaseController{
 	public ResultInfo delete(String ids){
 		try {
 			saleChanceService.delete(ids);
-			return new ResultInfo(Constant.OPT_SUCCESS);
+			return success(Constant.OPT_SUCCESS);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new ResultInfo(Constant.OPT_FAILURE);
+			return failure(Constant.OPT_FAILURE);
 		}
 	}
 	
@@ -43,10 +43,10 @@ public class SaleChanceController extends BaseController{
 	public ResultInfo addOrUpdate(SaleChance saleChance){
 		try {
 			saleChanceService.addOrUpdate(saleChance);
-			return new ResultInfo(Constant.OPT_SUCCESS);
+			return success(Constant.OPT_SUCCESS);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new ResultInfo(Constant.OPT_FAILURE);
+			return failure(Constant.OPT_FAILURE);
 		}
 	}
 	

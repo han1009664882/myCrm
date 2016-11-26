@@ -20,7 +20,8 @@ function formatState(val, row){
 function openSaleChanceAddDialog() {
     $("#dlg").dialog("open").dialog("setTitle", "添加销售机会信息");
     $("#createMan").val($.cookie('userName'));
-    $("#id").val("setValue","");
+    $("#id").val('');
+    $('#customerId').combobox('setValue', '');
 }
 
 // 打开修改窗口
