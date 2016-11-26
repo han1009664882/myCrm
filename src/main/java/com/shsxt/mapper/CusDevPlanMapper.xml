@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shsxt.dao.CusDevPlanDao">
+
+	<sql id="CusDevPlan_Columns">
+		id, saleChanceId, planItem, planDate, exeAffect, CreateDate, UpdateDate,
+		IsValid
+	</sql>
+	<select id="find" resultType="cusDevPlan">
+		select <include refid="CusDevPlan_Columns"/>
+		from t_cus_dev_plan 
+		<where>
+			IsValid = 1
+			<if test="@Ognl@isNotEmpty(saleChanceId)">
+				and saleChanceId = #{saleChanceId}
+			</if>
+		</where>
+	</select>
+	
+</mapper>

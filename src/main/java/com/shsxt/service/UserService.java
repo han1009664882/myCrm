@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.crm.base.ResultInfo;
 import com.crm.base.exception.LoginBizException;
-import com.crm.base.exception.ParamException;
 import com.shsxt.constant.Constant;
 import com.shsxt.dao.UserDao;
 import com.shsxt.model.User;
@@ -48,13 +47,9 @@ public class UserService {
 		User user = findUserById(userId);
 		
 		// 校验旧密码是否正确
-		if(!MD5Util.md5Method(oldPassword).equals(user.getPassword())){
-			throw new ParamException("旧密码输入错误，请重新输入");
-		}
+		AssertUtil.isTrue(MD5Util.md5Method(oldPassword).equals(user.getPassword()), "旧密码输入错误，请重新输入");
 		
-		if(userDao.updatePwd(userId, MD5Util.md5Method(newPassword))<1){
-			throw new ParamException(Constant.OPT_FAILURE); 
-		}
+		AssertUtil.isTrue(userDao.updatePwd(userId, MD5Util.md5Method(newPassword))<1, Constant.OPT_FAILURE);
 		return new ResultInfo(Constant.RESULT_OK,"密码修改成功");
 	}
 	
@@ -136,7 +131,7 @@ public class UserService {
 	 * @param userId
 	 * @return
 	 */
-	public User findUserById(Integer userId){
+	private User findUserById(Integer userId){
 		if(userId==null || userId<1){
 			throw new LoginBizException(Constant.LOGIN_FIRST);
 		}

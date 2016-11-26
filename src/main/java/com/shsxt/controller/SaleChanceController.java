@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,6 +22,19 @@ public class SaleChanceController extends BaseController {
 	@Autowired
 	private SaleChanceService saleChanceService;
 
+	@RequestMapping("detail")
+	public String detail(Integer saleChanceId, Integer show, Model model){
+		SaleChance saleChance = saleChanceService.findById(saleChanceId);
+		model.addAttribute("saleChance",saleChance);
+		model.addAttribute("show", show);
+		return "cus_dev_plan_detail";
+	}
+	
+	/**
+	 * 批量删除
+	 * @param ids
+	 * @return
+	 */
 	@RequestMapping("delete")
 	@ResponseBody
 	public ResultInfo delete(String ids) {

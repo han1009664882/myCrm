@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.crm.base.exception.ParamException;
-import com.github.miemiedev.mybatis.paginator.domain.Order;
-import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.shsxt.constant.SaleChanceDevResult;
 import com.shsxt.constant.SaleChanceState;
@@ -26,6 +24,15 @@ public class SaleChanceService {
 	@Autowired
 	private SaleChanceDao saleChanceDao;
 
+	/**
+	 * 通过Id查询SaleChance
+	 * @param saleChanceId
+	 * @return
+	 */
+	public SaleChance findById(Integer saleChanceId){
+		AssertUtil.isTrue(saleChanceId==null||saleChanceId<1, "请选择一条记录");
+		return saleChanceDao.loadById(saleChanceId);
+	}
 
 	/**
 	 * 删除 delete * from 表 where id in (1, 2)
@@ -91,10 +98,10 @@ public class SaleChanceService {
 	public Map<String, Object> selectForPage(SaleChanceQuery query) {
 
 		// 构建查询的分页参数
-		PageBounds pageBounds = new PageBounds(query.getPage(), query.getLimit(), Order.formString(query.getSort()));
+		//PageBounds pageBounds = new PageBounds(query.getPage(), query.getLimit(), Order.formString(query.getSort()));
 
 		// 分页查询
-		List<SaleChance> saleChances = saleChanceDao.selectForPage(query, pageBounds);
+		List<SaleChance> saleChances = saleChanceDao.selectForPage(query, query.initPageBounds());
 
 		// 获得结果集
 		PageList<SaleChance> pageList = (PageList<SaleChance>) saleChances;

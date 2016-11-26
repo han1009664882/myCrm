@@ -63,7 +63,7 @@
     <thead>
     <tr>
         <th field="id" width="50">编号</th>
-        <th field="planDate" name="planDateStr" width="50" editor="{type:'datebox',options:{required:true}}">日期</th>
+        <th field="planDate" name="planDate" width="50" editor="{type:'datebox',options:{required:true}}">日期</th>
         <th field="planItem" width="100" editor="{type:'validatebox',options:{required:true}}">计划内容</th>
         <th field="exeAffect" width="100" editor="{type:'validatebox',options:{required:true}}">执行效果</th>
     </tr>

@@ -20,9 +20,9 @@
         <th field="linkPhone" width="100" align="center" hidden="true">联系电话</th>
         <th field="description" width="200" align="center" hidden="true">机会描述</th>
         <th field="createMan" width="80" align="center">创建人</th>
-        <th field="createDateStr" width="150" align="center">创建时间</th>
+        <th field="createDate" width="150" align="center">创建时间</th>
         <th field="assignMan" width="50" align="center" >指派人</th>
-        <th field="assignTime" width="150" align="center" formatter="formatAssignTime" >指派时间</th>
+        <th field="assignTime" width="150" align="center" >指派时间</th>
         <th field="devResult" width="100" align="center" formatter="formatDevResult">客户开发状态</th>
         <th field="a" width="100" align="center" formatter="formatAction">操作</th>
     </tr>

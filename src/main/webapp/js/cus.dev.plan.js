@@ -4,14 +4,7 @@ function searchSaleChance() {
         "overView":$("#s_overview").val(),
         "devResult":$("#s_devResult").combobox("getValue")
     });
-}
-
-function formatAssignTime(val, row) {
-    if (val == null) {
-        return '';
-    }
-    return new Date(val).format('yyyy-MM-dd hh:mm:ss');
-}
+} 
 
 function formatDevResult(val,row) {
     if(val==0) {
@@ -25,10 +18,6 @@ function formatDevResult(val,row) {
     }
 }
 
-// 客户开发计划项管理
-function openCusDevPlanTab(id){
-    window.parent.openTab('客户开发计划项管理','sale_chance/detail?saleChanceId=' + id + '&show=0', 'icon-khkfjh');
-}
 
 // 查看客户开发计划项
 function openCusDevPlanTab2(id){
@@ -37,8 +26,20 @@ function openCusDevPlanTab2(id){
 
 function formatAction(val, row) {
     if(row.devResult == 0 || row.devResult == 1 ) {
-        return "<a href='javascript:openCusDevPlanTab(" + row.id + ")'>开发</a>";
+        return "<a href='javascript:openCusDevPlanTab(" + row.id + ",0)'>开发</a>";
     }else{
-        return "<a href='javascript:openCusDevPlanTab2(" + row.id + ")'>查看详细信息</a>";
+        return "<a href='javascript:openCusDevPlanTab(" + row.id + ",1)'>查看详细信息</a>";
     }
+}
+
+
+function openCusDevPlanTab(id,show){
+	var title = "";
+	if(show==0){
+		title = '客户开发计划项管理';
+	} else {
+		title = '查看客户开发计划项';
+	}
+	var url = 'sale_chance/detail?saleChanceId='+ id + '&show=' + show;
+    window.parent.openTab(title,url, 'icon-khkfjh');
 }
