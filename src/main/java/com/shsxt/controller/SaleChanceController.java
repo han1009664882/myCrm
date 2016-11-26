@@ -16,23 +16,18 @@ import com.shsxt.service.SaleChanceService;
 
 @Controller
 @RequestMapping("sale_chance")
-public class SaleChanceController extends BaseController{
+public class SaleChanceController extends BaseController {
 
 	@Autowired
 	private SaleChanceService saleChanceService;
-	
+
 	@RequestMapping("delete")
 	@ResponseBody
-	public ResultInfo delete(String ids){
-		try {
-			saleChanceService.delete(ids);
-			return success(Constant.OPT_SUCCESS);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return failure(Constant.OPT_FAILURE);
-		}
+	public ResultInfo delete(String ids) {
+		saleChanceService.delete(ids);
+		return success(Constant.OPT_SUCCESS);
 	}
-	
+
 	/**
 	 * 增加、修改
 	 * @param saleChance
@@ -40,16 +35,11 @@ public class SaleChanceController extends BaseController{
 	 */
 	@RequestMapping("add_update")
 	@ResponseBody
-	public ResultInfo addOrUpdate(SaleChance saleChance){
-		try {
-			saleChanceService.addOrUpdate(saleChance);
-			return success(Constant.OPT_SUCCESS);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return failure(Constant.OPT_FAILURE);
-		}
+	public ResultInfo addOrUpdate(SaleChance saleChance) {
+		saleChanceService.addOrUpdate(saleChance);
+		return success(Constant.OPT_SUCCESS);
 	}
-	
+
 	/**
 	 * 分页
 	 * @param query
@@ -57,13 +47,13 @@ public class SaleChanceController extends BaseController{
 	 */
 	@RequestMapping("list")
 	@ResponseBody
-	public Map<String,Object> selectForPage(SaleChanceQuery query){
+	public Map<String, Object> selectForPage(SaleChanceQuery query) {
 		return saleChanceService.selectForPage(query);
 	}
-	
+
 	@RequestMapping("index")
-	public String index(Integer state){
-		if(state==null){
+	public String index(Integer state) {
+		if (state == null) {
 			return "sale_chance";
 		} else {
 			return "cus_dev_plan";

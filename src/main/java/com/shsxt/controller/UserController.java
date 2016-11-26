@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.crm.base.BaseController;
 import com.crm.base.ResultInfo;
-import com.shsxt.constant.Constant;
 import com.shsxt.model.User;
 import com.shsxt.service.UserService;
 import com.shsxt.util.LoginUserUtil;
