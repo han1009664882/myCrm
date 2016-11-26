@@ -7,6 +7,10 @@ import org.apache.ibatis.annotations.Param;
 
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 
+/**
+ * @author Administrator
+ * @param <T>
+ */
 public interface BaseDao<T> {
 
 	 /**
