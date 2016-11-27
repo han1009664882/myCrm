@@ -43,7 +43,7 @@
             <td><input type="text" readonly="readonly" id="createMan" name="createMan" value="${saleChance.createMan?if_exists}" /></td>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>创建时间：</td>
-            <td><input type="text" id="createTime" name="createDate" readonly="readonly" value="${saleChance.createDateStr?if_exists}" /></td>
+            <td><input type="text" id="createTime" name="createDate" readonly="readonly" value="${saleChance.createDate?string('yyyy-MM-dd hh:mm:ss')}" /></td>
         </tr>
         <tr>
             <td>指派给：</td>
@@ -52,7 +52,7 @@
             </td>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>指派时间：</td>
-            <td><input type="text" id="assignTime" name="assignTime" readonly="readonly" value="${saleChance.assignTime?string("yyyy-MM-dd HH:mm:ss")}" /></td>
+            <td><input type="text" id="assignTime" name="assignTime" readonly="readonly" value="${saleChance.assignTime?string('yyyy-MM-dd hh:mm:ss')}" /></td>
         </tr>
     </table>
 </div>
@@ -74,7 +74,7 @@
     <#if show == 0 >
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">添加计划</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="javascript:$('#dg').edatagrid('destroyRow')">删除计划</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow');$('#dg').datagrid('acceptChanges');$('#dg').edatagrid('reload');">保存计划</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow');$('#dg').datagrid('acceptChanges');$('#dg').edatagrid('reload')">保存计划</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')">撤销行</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-kfcg" plain="true" onclick="updateSaleChanceDevResult(2)">开发成功</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-zzkf" plain="true" onclick="updateSaleChanceDevResult(3)">终止开发</a>

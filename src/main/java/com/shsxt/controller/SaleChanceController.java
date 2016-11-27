@@ -22,6 +22,26 @@ public class SaleChanceController extends BaseController {
 	@Autowired
 	private SaleChanceService saleChanceService;
 
+	/**
+	 * 修改开发结果
+	 * @param saleChanceId
+	 * @param devResult
+	 * @return
+	 */
+	@RequestMapping("update_devResult")
+	@ResponseBody
+	public ResultInfo updateDevResult(Integer saleChanceId,Integer devResult){
+		saleChanceService.updateDevResult(saleChanceId, devResult);
+		return success(Constant.OPT_SUCCESS);
+	}
+	
+	/**
+	 * 详细信息
+	 * @param saleChanceId
+	 * @param show
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("detail")
 	public String detail(Integer saleChanceId, Integer show, Model model){
 		SaleChance saleChance = saleChanceService.findById(saleChanceId);

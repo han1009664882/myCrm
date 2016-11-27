@@ -25,6 +25,18 @@ public class SaleChanceService {
 	private SaleChanceDao saleChanceDao;
 
 	/**
+	 * 更新开发状态
+	 * @param saleChanceId
+	 * @param devResult
+	 */
+	public void updateDevResult(Integer saleChanceId, Integer devResult){
+		AssertUtil.isTrue(saleChanceId==null||saleChanceId<1, "请选择一条记录");
+		SaleChance saleChance = saleChanceDao.loadById(saleChanceId);
+		saleChance.setDevResult(devResult);
+		saleChanceDao.update(saleChance);
+	}
+	
+	/**
 	 * 通过Id查询SaleChance
 	 * @param saleChanceId
 	 * @return
@@ -39,9 +51,7 @@ public class SaleChanceService {
 	 * @param ids 多个以逗号分隔 1,2
 	 */
 	public void delete(String ids) {
-		if (StringUtils.isBlank(ids)) {
-			throw new ParamException("请选择要删除的记录");
-		}
+		AssertUtil.notEmpty(ids, "请选择要删除的记录");
 		saleChanceDao.deleteBatch(ids);
 	}
 	
@@ -75,8 +85,6 @@ public class SaleChanceService {
 				saleChance.setState(SaleChanceState.ASSIGN.getType());
 			}
 			saleChance.setState(SaleChanceDevResult.UN_DEVELOPE.getType());
-			saleChance.setCreateDate(new Date());
-			saleChance.setUpdateDate(new Date());
 			saleChanceDao.insert(saleChance);
 		} else { // 修改
 			String assignMan = saleChance.getAssignMan();

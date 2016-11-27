@@ -116,7 +116,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         set
         isValid = 0, updateDate = now()
         where
-        id in (${ids})
+        id in (#{ids})
     </update>
 	
 	

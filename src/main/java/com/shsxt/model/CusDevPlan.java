@@ -2,6 +2,8 @@ package com.shsxt.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.crm.base.BaseModel;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -19,7 +21,8 @@ public class CusDevPlan extends BaseModel{
 	
 	private String planItem; // 计划项
 	
-	@JsonFormat(pattern="yyyy-MM-dd hh:mm:ss",timezone = "GMT+8")
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date planDate; // 计划日期
 	
 	private String exeAffect; // 执行效果
