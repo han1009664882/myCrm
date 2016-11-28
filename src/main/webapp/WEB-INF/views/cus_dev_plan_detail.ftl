@@ -63,22 +63,22 @@
     <thead>
     <tr>
         <th field="id" width="50">编号</th>
-        <th field="planDate" name="planDate" width="50" editor="{type:'datebox',options:{required:true}}">日期</th>
+        <th field="planDate" name="planDate" width="50" editor="{type:'datebox',options:{required:true,<#if show != 0 >javascript:$('#dg').edatagrid('disableEditing')</#if>}} ">日期</th>
         <th field="planItem" width="100" editor="{type:'validatebox',options:{required:true}}">计划内容</th>
         <th field="exeAffect" width="100" editor="{type:'validatebox',options:{required:true}}">执行效果</th>
     </tr>
     </thead>
 </table>
 
+<#if show == 0 >
 <div id="toolbar">
-    <#if show == 0 >
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">添加计划</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="javascript:$('#dg').edatagrid('destroyRow')">删除计划</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow');$('#dg').datagrid('acceptChanges');$('#dg').edatagrid('reload')">保存计划</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')">撤销行</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-kfcg" plain="true" onclick="updateSaleChanceDevResult(2)">开发成功</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-zzkf" plain="true" onclick="updateSaleChanceDevResult(3)">终止开发</a>
-    </#if>
 </div>
+</#if>
 </body>
 </html>
